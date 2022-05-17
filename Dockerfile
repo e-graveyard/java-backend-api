@@ -5,7 +5,7 @@ FROM jboss/wildfly:25.0.0.Final AS wildfly
 FROM maven AS dependencies
 WORKDIR /backend
 COPY pom.xml .
-RUN mvn war:war install:install
+RUN mvn verify --fail-never
 
 
 FROM dependencies AS build
